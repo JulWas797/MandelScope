@@ -16,7 +16,7 @@ Public Class FormMain
         Dim bmpData As BitmapData = canvas.LockBits(rect, ImageLockMode.WriteOnly, canvas.PixelFormat)
         Dim bytesPerPixel As Integer = Bitmap.GetPixelFormatSize(canvas.PixelFormat) / 8
         Dim stride As Integer = bmpData.Stride
-        Dim buffer(bmpData.Stride * bmpData.Height - 1) As Byte
+        Dim buffer(stride * bmpData.Height - 1) As Byte
         For y As Integer = 0 To canvas.Height - 1
             Parallel.For(0,
                          canvas.Width - 1,
