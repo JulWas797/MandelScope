@@ -4,7 +4,7 @@
 
 Mandelbrot is open source fractal explorer & generator built using VB.NET.
 
-> *This software is currely in a pre-release stage. Issues CAN happen.*
+![image](https://github.com/JulWas797/Mandelbrot/assets/51297298/5edb0321-4f67-4db8-9528-f880b52f94b6)
 
 ## How to use?
 
@@ -14,15 +14,13 @@ Please click the "About" button in app for usage guides
 
 I am planning to release it when 1.0 is ready. For now on please compile it yourself.
 
-If you want to see current state, please [click here for a screenshot](https://github.com/JulWas797/Mandelbrot/assets/51297298/1fc75494-969b-4eb0-8171-d6a5a4917a5a)
-
 ## To-Do
 
-- [ ] Improve used algorithm
+- [x] Improve used algorithm
 - [ ] Add more fractals
 - [ ] Implement Julia fractal features
 - [ ] Add move in-progress temp generation
-- [ ] **Implement proper coloring algorithm**
+- [x] **Implement proper coloring algorithm**
 
 ## Support my work!
 
