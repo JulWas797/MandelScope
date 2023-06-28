@@ -38,9 +38,9 @@ Partial Class FormAbout
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox1.Image = Global.Mandelbrot.My.Resources.Resources.AboutImage
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(174, 366)
+        Me.PictureBox1.Size = New System.Drawing.Size(232, 450)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
@@ -49,30 +49,27 @@ Partial Class FormAbout
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.Label1.Location = New System.Drawing.Point(189, 20)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(252, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(265, 55)
+        Me.Label1.Size = New System.Drawing.Size(329, 69)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Mandelbrot"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(199, 69)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(265, 85)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(104, 13)
+        Me.Label2.Size = New System.Drawing.Size(129, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Made by JulWas797"
         '
         'LinkLabelGithub
         '
         Me.LinkLabelGithub.AutoSize = True
-        Me.LinkLabelGithub.Location = New System.Drawing.Point(196, 314)
-        Me.LinkLabelGithub.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LinkLabelGithub.Location = New System.Drawing.Point(261, 386)
         Me.LinkLabelGithub.Name = "LinkLabelGithub"
-        Me.LinkLabelGithub.Size = New System.Drawing.Size(254, 13)
+        Me.LinkLabelGithub.Size = New System.Drawing.Size(314, 16)
         Me.LinkLabelGithub.TabIndex = 3
         Me.LinkLabelGithub.TabStop = True
         Me.LinkLabelGithub.Text = "Check out my GitHub for more open source software"
@@ -80,10 +77,9 @@ Partial Class FormAbout
         'LinkLabelCoffee
         '
         Me.LinkLabelCoffee.AutoSize = True
-        Me.LinkLabelCoffee.Location = New System.Drawing.Point(196, 336)
-        Me.LinkLabelCoffee.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LinkLabelCoffee.Location = New System.Drawing.Point(261, 414)
         Me.LinkLabelCoffee.Name = "LinkLabelCoffee"
-        Me.LinkLabelCoffee.Size = New System.Drawing.Size(204, 13)
+        Me.LinkLabelCoffee.Size = New System.Drawing.Size(251, 16)
         Me.LinkLabelCoffee.TabIndex = 4
         Me.LinkLabelCoffee.TabStop = True
         Me.LinkLabelCoffee.Text = "If you apriceate my work, buy me a coffee"
@@ -91,10 +87,9 @@ Partial Class FormAbout
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(199, 110)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(265, 135)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(257, 156)
+        Me.Label3.Size = New System.Drawing.Size(314, 192)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = resources.GetString("Label3.Text")
         '
@@ -102,18 +97,17 @@ Partial Class FormAbout
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.Label4.Location = New System.Drawing.Point(198, 284)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(264, 350)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(113, 17)
+        Me.Label4.Size = New System.Drawing.Size(97, 20)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Release 1.0pre1"
+        Me.Label4.Text = "Release 1.0"
         '
         'FormAbout
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(474, 366)
+        Me.ClientSize = New System.Drawing.Size(632, 450)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LinkLabelCoffee)
@@ -122,7 +116,7 @@ Partial Class FormAbout
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FormAbout"
         Me.Text = "About"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

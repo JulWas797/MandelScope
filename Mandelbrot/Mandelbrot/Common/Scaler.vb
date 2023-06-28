@@ -13,4 +13,8 @@
     Public Shared Function FloorAndCast(ByRef x As Double) As Integer
         Return Convert.ToInt32(Math.Floor(x))
     End Function
+
+    Public Shared Function GradientAround(ByRef value As Integer, ByRef around As Integer) As Integer
+        Return If(value > around, value + 2 * (around - value), value)
+    End Function
 End Class

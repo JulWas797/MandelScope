@@ -16,7 +16,7 @@ Public Class FormMain
         Dim bmpData As BitmapData = canvas.LockBits(rect, ImageLockMode.WriteOnly, canvas.PixelFormat)
         Dim bytesPerPixel As Integer = Bitmap.GetPixelFormatSize(canvas.PixelFormat) / 8
         Dim stride As Integer = bmpData.Stride
-        Dim buffer(stride * bmpData.Height - 1) As Byte
+        Dim buffer(bmpData.Stride * bmpData.Height - 1) As Byte
         For y As Integer = 0 To canvas.Height - 1
             Parallel.For(0,
                          canvas.Width - 1,
@@ -26,12 +26,12 @@ Public Class FormMain
                              Dim scaledY As Double = sCoord.y + SelectorYOffset.Value
                              Dim iter As Integer = currentAlg.IterationCnt(scaledX, scaledY, SelectorDepth.Value)
                              Dim colorScaleRatio As Double = iter / SelectorDepth.Value
-                             Dim colorCode As Integer = If(CheckBoxColor.Checked, colorScaleRatio * 6777216 + 10000000, colorScaleRatio * 255)
+                             Dim colorCode As Integer = If(CheckBoxColor.Checked, iter Mod 510, colorScaleRatio * 255)
                              If iter < SelectorCut.Value Then
                                  colorCode = 0
                              End If
                              Dim pixelOffset As Integer = y * stride + x * bytesPerPixel
-                             Dim currentColor As Color = If(CheckBoxColor.Checked, ColorTranslator.FromWin32(colorCode), Color.FromArgb(colorCode, colorCode, colorCode))
+                             Dim currentColor As Color = If(CheckBoxColor.Checked, Color.FromArgb(Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode, 255)), Color.FromArgb(colorCode, colorCode, colorCode))
                              buffer(pixelOffset) = currentColor.R
                              buffer(pixelOffset + 1) = currentColor.G
                              buffer(pixelOffset + 2) = currentColor.B
@@ -49,8 +49,6 @@ Public Class FormMain
         buffer = Nothing
         Marshal.CleanupUnusedObjectsInCurrentContext()
     End Sub
-
-
 
     Private Sub FormMain_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         RenderImage()
