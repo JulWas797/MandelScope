@@ -23,7 +23,6 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
-        Me.PictureBoxFractal = New System.Windows.Forms.PictureBox()
         Me.ButtonRefresh = New System.Windows.Forms.Button()
         Me.SidePanel = New System.Windows.Forms.Panel()
         Me.LabelYOffset = New System.Windows.Forms.Label()
@@ -53,9 +52,11 @@ Partial Class FormMain
         Me.ToolStripMenuMandelbrot = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuBurningShip = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuJulia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuTricorn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuBuffalo = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButtonAbout = New System.Windows.Forms.ToolStripButton()
         Me.PanelPictureBox = New System.Windows.Forms.Panel()
-        CType(Me.PictureBoxFractal, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBoxFractal = New System.Windows.Forms.PictureBox()
         Me.SidePanel.SuspendLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SelectorXOffset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,18 +67,8 @@ Partial Class FormMain
         CType(Me.SelectorCut, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStripMain.SuspendLayout()
         Me.PanelPictureBox.SuspendLayout()
+        CType(Me.PictureBoxFractal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBoxFractal
-        '
-        Me.PictureBoxFractal.BackColor = System.Drawing.SystemColors.Control
-        Me.PictureBoxFractal.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBoxFractal.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBoxFractal.Name = "PictureBoxFractal"
-        Me.PictureBoxFractal.Size = New System.Drawing.Size(968, 602)
-        Me.PictureBoxFractal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBoxFractal.TabIndex = 0
-        Me.PictureBoxFractal.TabStop = False
         '
         'ButtonRefresh
         '
@@ -272,6 +263,7 @@ Partial Class FormMain
         'LabelCut
         '
         Me.LabelCut.AutoSize = True
+        Me.LabelCut.BackColor = System.Drawing.SystemColors.Control
         Me.LabelCut.Location = New System.Drawing.Point(12, 44)
         Me.LabelCut.Name = "LabelCut"
         Me.LabelCut.Size = New System.Drawing.Size(63, 16)
@@ -331,7 +323,7 @@ Partial Class FormMain
         '
         'ToolStripMenuSwitchFractals
         '
-        Me.ToolStripMenuSwitchFractals.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuMandelbrot, Me.ToolStripMenuBurningShip, Me.ToolStripMenuJulia})
+        Me.ToolStripMenuSwitchFractals.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuMandelbrot, Me.ToolStripMenuBurningShip, Me.ToolStripMenuJulia, Me.ToolStripMenuTricorn, Me.ToolStripMenuBuffalo})
         Me.ToolStripMenuSwitchFractals.Name = "ToolStripMenuSwitchFractals"
         Me.ToolStripMenuSwitchFractals.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuSwitchFractals.Text = "Switch Fractal "
@@ -339,20 +331,32 @@ Partial Class FormMain
         'ToolStripMenuMandelbrot
         '
         Me.ToolStripMenuMandelbrot.Name = "ToolStripMenuMandelbrot"
-        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(174, 26)
+        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuMandelbrot.Text = "Mandelbrot"
         '
         'ToolStripMenuBurningShip
         '
         Me.ToolStripMenuBurningShip.Name = "ToolStripMenuBurningShip"
-        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(174, 26)
+        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuBurningShip.Text = "Burning ship"
         '
         'ToolStripMenuJulia
         '
         Me.ToolStripMenuJulia.Name = "ToolStripMenuJulia"
-        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(174, 26)
+        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuJulia.Text = "Julia"
+        '
+        'ToolStripMenuTricorn
+        '
+        Me.ToolStripMenuTricorn.Name = "ToolStripMenuTricorn"
+        Me.ToolStripMenuTricorn.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuTricorn.Text = "Tricorn"
+        '
+        'ToolStripMenuBuffalo
+        '
+        Me.ToolStripMenuBuffalo.Name = "ToolStripMenuBuffalo"
+        Me.ToolStripMenuBuffalo.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuBuffalo.Text = "Buffalo"
         '
         'ToolStripButtonAbout
         '
@@ -371,6 +375,17 @@ Partial Class FormMain
         Me.PanelPictureBox.Size = New System.Drawing.Size(968, 602)
         Me.PanelPictureBox.TabIndex = 4
         '
+        'PictureBoxFractal
+        '
+        Me.PictureBoxFractal.BackColor = System.Drawing.SystemColors.Control
+        Me.PictureBoxFractal.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBoxFractal.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBoxFractal.Name = "PictureBoxFractal"
+        Me.PictureBoxFractal.Size = New System.Drawing.Size(968, 602)
+        Me.PictureBoxFractal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxFractal.TabIndex = 0
+        Me.PictureBoxFractal.TabStop = False
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -382,7 +397,6 @@ Partial Class FormMain
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FormMain"
         Me.Text = "Mandelbrot"
-        CType(Me.PictureBoxFractal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SidePanel.ResumeLayout(False)
         Me.SidePanel.PerformLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).EndInit()
@@ -395,6 +409,7 @@ Partial Class FormMain
         Me.ToolStripMain.ResumeLayout(False)
         Me.ToolStripMain.PerformLayout()
         Me.PanelPictureBox.ResumeLayout(False)
+        CType(Me.PictureBoxFractal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -432,4 +447,6 @@ Partial Class FormMain
     Friend WithEvents ToolStripButtonAbout As ToolStripButton
     Friend WithEvents PanelPictureBox As Panel
     Friend WithEvents ToolStripMenuJulia As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuTricorn As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuBuffalo As ToolStripMenuItem
 End Class

@@ -31,7 +31,12 @@ Public Class FormMain
                                  colorCode = 0
                              End If
                              Dim pixelOffset As Integer = y * stride + x * bytesPerPixel
-                             Dim currentColor As Color = If(CheckBoxColor.Checked, Color.FromArgb(Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode, 255)), Color.FromArgb(colorCode, colorCode, colorCode))
+                             Dim currentColor As Color
+                             If iter = SelectorDepth.Value Then
+                                 currentColor = Color.Black
+                             Else
+                                 currentColor = If(CheckBoxColor.Checked, Color.FromArgb(Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode, 255)), Color.FromArgb(colorCode, colorCode, colorCode))
+                             End If
                              buffer(pixelOffset) = currentColor.R
                              buffer(pixelOffset + 1) = currentColor.G
                              buffer(pixelOffset + 2) = currentColor.B
@@ -110,18 +115,15 @@ Public Class FormMain
     End Sub
 
     Private Sub ToolStripMenuMandelbrot_Click(sender As Object, e As EventArgs) Handles ToolStripMenuMandelbrot.Click
-        currentAlg = New Mandelbrot
-        RenderImage()
+        SetAlgorithm(New Mandelbrot)
     End Sub
 
     Private Sub ToolStripMenuBurningShip_Click(sender As Object, e As EventArgs) Handles ToolStripMenuBurningShip.Click
-        currentAlg = New BurningShip
-        RenderImage()
+        SetAlgorithm(New BurningShip)
     End Sub
 
     Private Sub ToolStripMenuJulia_Click(sender As Object, e As EventArgs) Handles ToolStripMenuJulia.Click
-        currentAlg = New Julia
-        RenderImage()
+        SetAlgorithm(New Julia)
     End Sub
 
     Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
@@ -131,5 +133,18 @@ Public Class FormMain
     Private Sub ToolStripMenuResetZoom_Click(sender As Object, e As EventArgs) Handles ToolStripMenuResetZoom.Click
         scaleFactor = 2
         RenderImage()
+    End Sub
+
+    Private Sub SetAlgorithm(ByRef algorithm As IAlgorithm)
+        currentAlg = algorithm
+        RenderImage()
+    End Sub
+
+    Private Sub ToolStripMenuTricorn_Click(sender As Object, e As EventArgs) Handles ToolStripMenuTricorn.Click
+        SetAlgorithm(New Tricorn)
+    End Sub
+
+    Private Sub ToolStripMenuBuffalo_Click(sender As Object, e As EventArgs) Handles ToolStripMenuBuffalo.Click
+        SetAlgorithm(New Buffalo)
     End Sub
 End Class
