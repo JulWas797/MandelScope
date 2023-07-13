@@ -17,7 +17,7 @@ You can get the app via [Releases](https://github.com/JulWas797/Mandelbrot/relea
 ## To-Do
 
 - [x] Improve used algorithm
-- [ ] Add more fractals
+- [x] Add more fractals
 - [ ] Implement Julia fractal features
 - [ ] Add move in-progress temp generation
 - [x] **Implement proper coloring algorithm**
