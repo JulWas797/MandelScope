@@ -7,9 +7,14 @@ Public Class FormMain
     Private ptX As Double = 0
     Private ptY As Double = 0
     Private currentAlg As IAlgorithm = New Mandelbrot
+    Private clicked As Boolean = False
 
     Private Sub RenderImage()
         Dim pixelScale As Double = SelectorScale.Value
+        DrawCanvas(pixelScale, SelectorXOffset.Value, SelectorYOffset.Value)
+    End Sub
+
+    Private Sub DrawCanvas(ByVal pixelScale As Double, ByVal xOff As Double, ByVal yOff As Double)
         Dim invPixelScale As Double = 1 / pixelScale
         Dim canvas As New Bitmap(Scaler.FloorAndCast(GetWidth() * invPixelScale), Scaler.FloorAndCast(GetHeight() * invPixelScale))
         Dim rect As New Rectangle(0, 0, canvas.Width, canvas.Height)
@@ -22,11 +27,16 @@ Public Class FormMain
                          canvas.Width - 1,
                          Sub(x)
                              Dim sCoord As Types.Pixel = Scaler.ScalePixel(x, y, GetWidth, GetHeight, scaleFactor, pixelScale)
-                             Dim scaledX As Double = sCoord.x + SelectorXOffset.Value
-                             Dim scaledY As Double = sCoord.y + SelectorYOffset.Value
+                             Dim scaledX As Double = sCoord.x + xOff
+                             Dim scaledY As Double = sCoord.y + yOff
                              Dim iter As Integer = currentAlg.IterationCnt(scaledX, scaledY, SelectorDepth.Value)
-                             Dim colorScaleRatio As Double = iter / SelectorDepth.Value
-                             Dim colorCode As Integer = If(CheckBoxColor.Checked, iter Mod 510, colorScaleRatio * 255)
+                             Dim colorCode As Integer
+                             If CheckBoxColor.Checked Then
+                                 colorCode = iter Mod 510
+                             Else
+                                 Dim colorScaleRatio As Double = iter / SelectorDepth.Value
+                                 colorCode = colorScaleRatio * 255
+                             End If
                              If iter < SelectorCut.Value Then
                                  colorCode = 0
                              End If
@@ -94,17 +104,27 @@ Public Class FormMain
     End Sub
 
     Private Sub PictureBoxFractal_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseDown
+        clicked = True
         ptX = e.X
         ptY = e.Y
     End Sub
 
     Private Sub PictureBoxFractal_MouseUp(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseUp
-        Dim deltaX As Integer = ptX - e.X
-        Dim deltaY As Integer = ptY - e.Y
-        SelectorXOffset.Value += (deltaX / PictureBoxFractal.Width) * scaleFactor
-        SelectorYOffset.Value += (deltaY / PictureBoxFractal.Height) * scaleFactor
+        clicked = False
+        SelectorXOffset.Value = newXOffset(e)
+        SelectorYOffset.Value = newYOffset(e)
         RenderImage()
     End Sub
+
+    Private Function newXOffset(ByRef e As MouseEventArgs) As Double
+        Dim deltaX As Integer = ptX - e.X
+        Return SelectorXOffset.Value + (2 * deltaX / PictureBoxFractal.Width) * scaleFactor
+    End Function
+
+    Private Function newYOffset(ByRef e As MouseEventArgs) As Double
+        Dim deltaY As Integer = ptY - e.Y
+        Return SelectorYOffset.Value + (2 * deltaY / PictureBoxFractal.Height) * scaleFactor
+    End Function
 
     Private Sub ToolStripTogglePanel_Click(sender As Object, e As EventArgs) Handles ToolStripMenuTogglePanel.Click
         SidePanel.Visible = Not SidePanel.Visible
@@ -146,5 +166,11 @@ Public Class FormMain
 
     Private Sub ToolStripMenuBuffalo_Click(sender As Object, e As EventArgs) Handles ToolStripMenuBuffalo.Click
         SetAlgorithm(New Buffalo)
+    End Sub
+
+    Private Sub PictureBoxFractal_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseMove
+        If clicked And CheckBoxLiveRender.Checked Then
+            DrawCanvas(5, newXOffset(e), newYOffset(e))
+        End If
     End Sub
 End Class

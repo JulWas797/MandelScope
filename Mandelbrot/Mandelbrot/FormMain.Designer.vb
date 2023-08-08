@@ -57,6 +57,7 @@ Partial Class FormMain
         Me.ToolStripButtonAbout = New System.Windows.Forms.ToolStripButton()
         Me.PanelPictureBox = New System.Windows.Forms.Panel()
         Me.PictureBoxFractal = New System.Windows.Forms.PictureBox()
+        Me.CheckBoxLiveRender = New System.Windows.Forms.CheckBox()
         Me.SidePanel.SuspendLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SelectorXOffset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +84,7 @@ Partial Class FormMain
         '
         'SidePanel
         '
+        Me.SidePanel.Controls.Add(Me.CheckBoxLiveRender)
         Me.SidePanel.Controls.Add(Me.LabelYOffset)
         Me.SidePanel.Controls.Add(Me.SelectorYOffset)
         Me.SidePanel.Controls.Add(Me.LabelXOffset)
@@ -312,50 +314,50 @@ Partial Class FormMain
         'ToolStripMenuTogglePanel
         '
         Me.ToolStripMenuTogglePanel.Name = "ToolStripMenuTogglePanel"
-        Me.ToolStripMenuTogglePanel.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuTogglePanel.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuTogglePanel.Text = "Toggle Panel"
         '
         'ToolStripMenuResetZoom
         '
         Me.ToolStripMenuResetZoom.Name = "ToolStripMenuResetZoom"
-        Me.ToolStripMenuResetZoom.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuResetZoom.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuResetZoom.Text = "Reset Zoom"
         '
         'ToolStripMenuSwitchFractals
         '
         Me.ToolStripMenuSwitchFractals.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuMandelbrot, Me.ToolStripMenuBurningShip, Me.ToolStripMenuJulia, Me.ToolStripMenuTricorn, Me.ToolStripMenuBuffalo})
         Me.ToolStripMenuSwitchFractals.Name = "ToolStripMenuSwitchFractals"
-        Me.ToolStripMenuSwitchFractals.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuSwitchFractals.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuSwitchFractals.Text = "Switch Fractal "
         '
         'ToolStripMenuMandelbrot
         '
         Me.ToolStripMenuMandelbrot.Name = "ToolStripMenuMandelbrot"
-        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuMandelbrot.Text = "Mandelbrot"
         '
         'ToolStripMenuBurningShip
         '
         Me.ToolStripMenuBurningShip.Name = "ToolStripMenuBurningShip"
-        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuBurningShip.Text = "Burning ship"
         '
         'ToolStripMenuJulia
         '
         Me.ToolStripMenuJulia.Name = "ToolStripMenuJulia"
-        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuJulia.Text = "Julia"
         '
         'ToolStripMenuTricorn
         '
         Me.ToolStripMenuTricorn.Name = "ToolStripMenuTricorn"
-        Me.ToolStripMenuTricorn.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuTricorn.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuTricorn.Text = "Tricorn"
         '
         'ToolStripMenuBuffalo
         '
         Me.ToolStripMenuBuffalo.Name = "ToolStripMenuBuffalo"
-        Me.ToolStripMenuBuffalo.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuBuffalo.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuBuffalo.Text = "Buffalo"
         '
         'ToolStripButtonAbout
@@ -385,6 +387,18 @@ Partial Class FormMain
         Me.PictureBoxFractal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBoxFractal.TabIndex = 0
         Me.PictureBoxFractal.TabStop = False
+        '
+        'CheckBoxLiveRender
+        '
+        Me.CheckBoxLiveRender.AutoSize = True
+        Me.CheckBoxLiveRender.Checked = True
+        Me.CheckBoxLiveRender.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxLiveRender.Location = New System.Drawing.Point(15, 319)
+        Me.CheckBoxLiveRender.Name = "CheckBoxLiveRender"
+        Me.CheckBoxLiveRender.Size = New System.Drawing.Size(120, 20)
+        Me.CheckBoxLiveRender.TabIndex = 24
+        Me.CheckBoxLiveRender.Text = "Live Rendering"
+        Me.CheckBoxLiveRender.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -449,4 +463,5 @@ Partial Class FormMain
     Friend WithEvents ToolStripMenuJulia As ToolStripMenuItem
     Friend WithEvents ToolStripMenuTricorn As ToolStripMenuItem
     Friend WithEvents ToolStripMenuBuffalo As ToolStripMenuItem
+    Friend WithEvents CheckBoxLiveRender As CheckBox
 End Class

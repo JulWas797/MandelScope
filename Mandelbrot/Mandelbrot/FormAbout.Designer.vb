@@ -30,6 +30,7 @@ Partial Class FormAbout
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LinkLabelWebsite = New System.Windows.Forms.LinkLabel()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -89,7 +90,7 @@ Partial Class FormAbout
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(97, 20)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Release 1.1"
+        Me.Label4.Text = "Release 1.2"
         '
         'PictureBox1
         '
@@ -98,16 +99,27 @@ Partial Class FormAbout
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(232, 450)
+        Me.PictureBox1.Size = New System.Drawing.Size(232, 472)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        '
+        'LinkLabelWebsite
+        '
+        Me.LinkLabelWebsite.AutoSize = True
+        Me.LinkLabelWebsite.Location = New System.Drawing.Point(261, 442)
+        Me.LinkLabelWebsite.Name = "LinkLabelWebsite"
+        Me.LinkLabelWebsite.Size = New System.Drawing.Size(193, 16)
+        Me.LinkLabelWebsite.TabIndex = 7
+        Me.LinkLabelWebsite.TabStop = True
+        Me.LinkLabelWebsite.Text = "Take a look at my website here"
         '
         'FormAbout
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(632, 450)
+        Me.ClientSize = New System.Drawing.Size(632, 472)
+        Me.Controls.Add(Me.LinkLabelWebsite)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LinkLabelCoffee)
@@ -133,4 +145,5 @@ Partial Class FormAbout
     Friend WithEvents LinkLabelCoffee As LinkLabel
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents LinkLabelWebsite As LinkLabel
 End Class
