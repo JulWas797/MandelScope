@@ -1,6 +1,7 @@
 # Mandelbrot
 
-![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/JulWas797/Mandelbrot) ![lastcommit](https://img.shields.io/github/last-commit/julwas797/mandelbrot) ![license](https://img.shields.io/github/license/julwas797/Mandelbrot) ![issues](https://img.shields.io/github/issues/julwas797/Mandelbrot) ![lang](https://img.shields.io/github/languages/top/JulWas797/Mandelbrot) [![Buymeacoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://bmc.link/julwas797) 
+![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/JulWas797/Mandelbrot) ![lastcommit](https://img.shields.io/github/last-commit/julwas797/mandelbrot) ![license](https://img.shields.io/github/license/julwas797/Mandelbrot) ![issues](https://img.shields.io/github/issues/julwas797/Mandelbrot) ![lang](https://img.shields.io/github/languages/top/JulWas797/Mandelbrot) [![Buymeacoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://bmc.link/julwas797) ![code quality](https://img.shields.io/codefactor/grade/github/JulWas797/Mandelbrot
+)
 
 Mandelbrot is open source fractal explorer & generator built using VB.NET.
 
