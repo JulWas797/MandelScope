@@ -22,9 +22,11 @@ Partial Class FormMain
     'Nie należy modyfikować za pomocą edytora kodu.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Me.ButtonRefresh = New System.Windows.Forms.Button()
         Me.SidePanel = New System.Windows.Forms.Panel()
+        Me.CheckBoxLiveRender = New System.Windows.Forms.CheckBox()
         Me.LabelYOffset = New System.Windows.Forms.Label()
         Me.SelectorYOffset = New System.Windows.Forms.NumericUpDown()
         Me.LabelXOffset = New System.Windows.Forms.Label()
@@ -57,7 +59,7 @@ Partial Class FormMain
         Me.ToolStripButtonAbout = New System.Windows.Forms.ToolStripButton()
         Me.PanelPictureBox = New System.Windows.Forms.Panel()
         Me.PictureBoxFractal = New System.Windows.Forms.PictureBox()
-        Me.CheckBoxLiveRender = New System.Windows.Forms.CheckBox()
+        Me.ScrollTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SidePanel.SuspendLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SelectorXOffset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +112,18 @@ Partial Class FormMain
         Me.SidePanel.Name = "SidePanel"
         Me.SidePanel.Size = New System.Drawing.Size(200, 629)
         Me.SidePanel.TabIndex = 2
+        '
+        'CheckBoxLiveRender
+        '
+        Me.CheckBoxLiveRender.AutoSize = True
+        Me.CheckBoxLiveRender.Checked = True
+        Me.CheckBoxLiveRender.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxLiveRender.Location = New System.Drawing.Point(15, 319)
+        Me.CheckBoxLiveRender.Name = "CheckBoxLiveRender"
+        Me.CheckBoxLiveRender.Size = New System.Drawing.Size(120, 20)
+        Me.CheckBoxLiveRender.TabIndex = 24
+        Me.CheckBoxLiveRender.Text = "Live Rendering"
+        Me.CheckBoxLiveRender.UseVisualStyleBackColor = True
         '
         'LabelYOffset
         '
@@ -388,18 +402,6 @@ Partial Class FormMain
         Me.PictureBoxFractal.TabIndex = 0
         Me.PictureBoxFractal.TabStop = False
         '
-        'CheckBoxLiveRender
-        '
-        Me.CheckBoxLiveRender.AutoSize = True
-        Me.CheckBoxLiveRender.Checked = True
-        Me.CheckBoxLiveRender.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxLiveRender.Location = New System.Drawing.Point(15, 319)
-        Me.CheckBoxLiveRender.Name = "CheckBoxLiveRender"
-        Me.CheckBoxLiveRender.Size = New System.Drawing.Size(120, 20)
-        Me.CheckBoxLiveRender.TabIndex = 24
-        Me.CheckBoxLiveRender.Text = "Live Rendering"
-        Me.CheckBoxLiveRender.UseVisualStyleBackColor = True
-        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -464,4 +466,5 @@ Partial Class FormMain
     Friend WithEvents ToolStripMenuTricorn As ToolStripMenuItem
     Friend WithEvents ToolStripMenuBuffalo As ToolStripMenuItem
     Friend WithEvents CheckBoxLiveRender As CheckBox
+    Friend WithEvents ScrollTimer As Timer
 End Class

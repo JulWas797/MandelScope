@@ -8,6 +8,7 @@ Public Class FormMain
     Private ptY As Double = 0
     Private currentAlg As IAlgorithm = New Mandelbrot
     Private clicked As Boolean = False
+    Private scrollRendered As Boolean = True
 
     Private Sub RenderImage()
         Dim pixelScale As Double = SelectorScale.Value
@@ -169,8 +170,37 @@ Public Class FormMain
     End Sub
 
     Private Sub PictureBoxFractal_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseMove
+        Dim newXOff As Double = newXOffset(e)
+        Dim newYOff As Double = newYOffset(e)
         If clicked And CheckBoxLiveRender.Checked Then
-            DrawCanvas(5, newXOffset(e), newYOffset(e))
+            DrawIfChecked(newXOff, newYOff)
+        End If
+    End Sub
+
+    Private Sub PictureBoxFractal_MouseWheel(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseWheel
+        Dim chDelta As Double = e.Delta / 1000
+        If e.Delta > 0 Then
+            scaleFactor *= 1 + chDelta
+        Else
+            scaleFactor /= 1 - chDelta
+        End If
+        DrawIfChecked(SelectorXOffset.Value, SelectorYOffset.Value)
+        ScrollTimer.Stop()
+        ScrollTimer.Start()
+    End Sub
+
+    Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ScrollTimer.Stop()
+    End Sub
+
+    Private Sub ScrollTimer_Tick(sender As Object, e As EventArgs) Handles ScrollTimer.Tick
+        RenderImage()
+        ScrollTimer.Stop()
+    End Sub
+
+    Private Sub DrawIfChecked(ByRef x As Double, ByRef y As Double)
+        If CheckBoxLiveRender.Checked Then
+            DrawCanvas(5, x, y)
         End If
     End Sub
 End Class
