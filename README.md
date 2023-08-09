@@ -15,6 +15,8 @@ Please click the "About" button in app for usage guides
 
 You can get the app via [Releases](https://github.com/JulWas797/Mandelbrot/releases)
 
+> ![64bit](https://icons.iconarchive.com/icons/fatcow/farm-fresh/16/64-bit-icon.png)  The published releases use **64-bit** technology to ensure fastest possible computing speed on modern day machines. Horever, if you don't have CPU using this architeture, you can try compiling the app yourself using **Microsoft Visual Studio**, as it isn't using any code elements specific to modern hardware.
+
 ## To-Do
 
 - [x] Improve used algorithm
