@@ -71,7 +71,7 @@ Partial Class FormAbout
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(97, 20)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Release 1.3"
+        Me.Label4.Text = "Release 1.4"
         '
         'LinkLabelWebsite
         '

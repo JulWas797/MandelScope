@@ -7,60 +7,69 @@ Public Class FormMain
     Private ptX As Double = 0
     Private ptY As Double = 0
     Private currentAlg As IAlgorithm = New Mandelbrot
-    Private clicked As Boolean = False
-    Private scrollRendered As Boolean = True
+    Private clicked As Boolean = False, scrollRendered As Boolean = True
 
     Private Sub RenderImage()
         Dim pixelScale As Double = SelectorScale.Value
         DrawCanvas(pixelScale, SelectorXOffset.Value, SelectorYOffset.Value)
     End Sub
 
-    Private Sub DrawCanvas(ByVal pixelScale As Double, ByVal xOff As Double, ByVal yOff As Double)
+    Private Sub DrawCanvas(pixelScale As Double, xOff As Double, yOff As Double)
         Dim invPixelScale As Double = 1 / pixelScale
-        Dim canvas As New Bitmap(Scaler.FloorAndCast(GetWidth() * invPixelScale), Scaler.FloorAndCast(GetHeight() * invPixelScale))
-        Dim rect As New Rectangle(0, 0, canvas.Width, canvas.Height)
-        Dim bmpData As BitmapData = canvas.LockBits(rect, ImageLockMode.WriteOnly, canvas.PixelFormat)
-        Dim bytesPerPixel As Integer = Bitmap.GetPixelFormatSize(canvas.PixelFormat) / 8
-        Dim stride As Integer = bmpData.Stride
-        Dim buffer(bmpData.Stride * bmpData.Height - 1) As Byte
-        For y As Integer = 0 To canvas.Height - 1
+        Dim width = Scaler.FloorAndCast(GetWidth() * invPixelScale), height = Scaler.FloorAndCast(GetHeight() * invPixelScale)
+        Dim canvas As New Bitmap(width, height)
+        Dim rect As New Rectangle(0, 0, width, height)
+        Dim format = canvas.PixelFormat
+        Dim bmpData = canvas.LockBits(rect, ImageLockMode.WriteOnly, format)
+        Dim bytesPerPixel As Integer = Bitmap.GetPixelFormatSize(format) / 8
+        Dim stride = bmpData.Stride
+        Dim buffer(stride * height - 1) As Byte
+        For y = 0 To height - 1
             Parallel.For(0,
-                         canvas.Width - 1,
+                         width - 1,
                          Sub(x)
-                             Dim sCoord As Types.Pixel = Scaler.ScalePixel(x, y, GetWidth, GetHeight, scaleFactor, pixelScale)
-                             Dim scaledX As Double = sCoord.x + xOff
-                             Dim scaledY As Double = sCoord.y + yOff
-                             Dim iter As Integer = currentAlg.IterationCnt(scaledX, scaledY, SelectorDepth.Value)
-                             Dim colorCode As Integer
-                             If CheckBoxColor.Checked Then
-                                 colorCode = iter Mod 510
-                             Else
-                                 Dim colorScaleRatio As Double = iter / SelectorDepth.Value
-                                 colorCode = colorScaleRatio * 255
+
+                             Dim sCoord = Scaler.ScalePixel(x, y, GetWidth, GetHeight, scaleFactor, pixelScale)
+                             Dim scaledX = sCoord.x + xOff, scaledY = sCoord.y + yOff
+                             Dim iter = currentAlg.IterationCnt(scaledX, scaledY, SelectorDepth.Value)
+                             Dim pixelOffset = y * stride + x * bytesPerPixel
+                             Dim R = 0, G = 0, B = 0
+                             Dim colorCode = 0
+
+                             If iter >= SelectorCut.Value Then
+                                 If CheckBoxColor.Checked Then
+                                     colorCode = iter Mod 510
+                                 Else
+                                     Dim colorScaleRatio As Double = iter / SelectorDepth.Value
+                                     colorCode = colorScaleRatio * 255
+                                 End If
                              End If
-                             If iter < SelectorCut.Value Then
-                                 colorCode = 0
+
+                             If Not iter = SelectorDepth.Value Then
+                                 If CheckBoxColor.Checked Then
+                                     R = Scaler.GradientAround(colorCode Mod 100, 50)
+                                     B = Scaler.GradientAround(colorCode, 255)
+                                 Else
+                                     R = colorCode
+                                     B = R
+                                 End If
+                                 G = R
                              End If
-                             Dim pixelOffset As Integer = y * stride + x * bytesPerPixel
-                             Dim currentColor As Color
-                             If iter = SelectorDepth.Value Then
-                                 currentColor = Color.Black
-                             Else
-                                 currentColor = If(CheckBoxColor.Checked, Color.FromArgb(Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode Mod 100, 50), Scaler.GradientAround(colorCode, 255)), Color.FromArgb(colorCode, colorCode, colorCode))
-                             End If
-                             buffer(pixelOffset) = currentColor.R
-                             buffer(pixelOffset + 1) = currentColor.G
-                             buffer(pixelOffset + 2) = currentColor.B
+
+                             buffer(pixelOffset) = R
+                             buffer(pixelOffset + 1) = G
+                             buffer(pixelOffset + 2) = B
                              buffer(pixelOffset + 3) = 255
+
                          End Sub)
         Next
         Marshal.Copy(buffer, 0, bmpData.Scan0, buffer.Length)
         canvas.UnlockBits(bmpData)
-        If PictureBoxFractal.Image IsNot Nothing Then
-            PictureBoxFractal.Image.Dispose()
-        End If
-        PictureBoxFractal.Image = canvas
-        PictureBoxFractal.Refresh()
+        With PictureBoxFractal
+            .Image?.Dispose()
+            .Image = canvas
+            .Refresh()
+        End With
         bmpData = Nothing
         buffer = Nothing
         Marshal.CleanupUnusedObjectsInCurrentContext()
@@ -170,15 +179,15 @@ Public Class FormMain
     End Sub
 
     Private Sub PictureBoxFractal_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseMove
-        Dim newXOff As Double = newXOffset(e)
-        Dim newYOff As Double = newYOffset(e)
+        Dim newXOff = newXOffset(e)
+        Dim newYOff = newYOffset(e)
         If clicked And CheckBoxLiveRender.Checked Then
             DrawIfChecked(newXOff, newYOff)
         End If
     End Sub
 
     Private Sub PictureBoxFractal_MouseWheel(sender As Object, e As MouseEventArgs) Handles PictureBoxFractal.MouseWheel
-        Dim chDelta As Double = e.Delta / 1000
+        Dim chDelta = e.Delta / 1000
         If e.Delta > 0 Then
             scaleFactor *= 1 + chDelta
         Else
@@ -196,6 +205,12 @@ Public Class FormMain
     Private Sub ScrollTimer_Tick(sender As Object, e As EventArgs) Handles ScrollTimer.Tick
         RenderImage()
         ScrollTimer.Stop()
+    End Sub
+
+    Private Sub ToolStripMenuResetPosition_Click(sender As Object, e As EventArgs) Handles ToolStripMenuResetPosition.Click
+        SelectorXOffset.Value = 0
+        SelectorYOffset.Value = 0
+        ToolStripMenuResetZoom_Click(sender, e)
     End Sub
 
     Private Sub DrawIfChecked(ByRef x As Double, ByRef y As Double)

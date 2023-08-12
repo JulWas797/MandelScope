@@ -3,8 +3,8 @@
         Dim tPix As New Types.Pixel
         Dim centerX As Integer = Math.Floor(width * (1 / pixelsScaleFactor) / 2)
         Dim centerY As Integer = Math.Floor(height * (1 / pixelsScaleFactor) / 2)
-        Dim scaledX As Double = scaleFactor / centerX
-        Dim scaledY As Double = scaleFactor / centerY
+        Dim scaledX = scaleFactor / centerX
+        Dim scaledY = scaleFactor / centerY
         tPix.x = (x - centerX) * scaledX
         tPix.y = (y - centerY) * scaledY
         Return tPix
