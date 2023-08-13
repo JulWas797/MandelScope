@@ -1,11 +1,11 @@
-<h1><img src="https://github.com/JulWas797/Mandelbrot/assets/51297298/bf2f47dd-9476-4a2b-9cdf-85f93581c340" width=32 height=32> Mandelbrot</h1>
+<h1><img src="https://github.com/JulWas797/Mandelbrot/assets/51297298/bf2f47dd-9476-4a2b-9cdf-85f93581c340" width=32 height=32> MandelScope</h1>
 
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/JulWas797/Mandelbrot) ![lastcommit](https://img.shields.io/github/last-commit/julwas797/mandelbrot) ![license](https://img.shields.io/github/license/julwas797/Mandelbrot) ![issues](https://img.shields.io/github/issues/julwas797/Mandelbrot) ![lang](https://img.shields.io/github/languages/top/JulWas797/Mandelbrot) [![Buymeacoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://bmc.link/julwas797) ![code quality](https://img.shields.io/codefactor/grade/github/JulWas797/Mandelbrot
 )
 
-Mandelbrot is open source fractal explorer & generator built using VB.NET.
+MandelScope is open source fractal explorer & generator built using VB.NET.
 
-![image](https://github.com/JulWas797/Mandelbrot/assets/51297298/5edb0321-4f67-4db8-9528-f880b52f94b6)
+![image](https://github.com/JulWas797/MandelScope/assets/51297298/eb7c7cde-a26c-49b0-8d1f-e03061a99c83)
 
 ## How to use?
 
