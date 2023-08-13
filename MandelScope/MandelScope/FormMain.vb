@@ -17,10 +17,10 @@ Public Class FormMain
     Private Sub DrawCanvas(pixelScale As Double, xOff As Double, yOff As Double)
         Dim invPixelScale As Double = 1 / pixelScale
         Dim width = Scaler.FloorAndCast(GetWidth() * invPixelScale), height = Scaler.FloorAndCast(GetHeight() * invPixelScale)
-        Dim canvas As New Bitmap(width, height)
+        Dim format = PixelFormat.Format24bppRgb
+        Dim canvas As New Bitmap(width, height, format)
         Dim rect As New Rectangle(0, 0, width, height)
-        Dim format = canvas.PixelFormat
-        Dim bmpData = canvas.LockBits(rect, ImageLockMode.WriteOnly, format)
+        Dim bmpData = canvas.LockBits(rect, ImageLockMode.WriteOnly, Format)
         Dim bytesPerPixel As Integer = Bitmap.GetPixelFormatSize(format) / 8
         Dim stride = bmpData.Stride
         Dim buffer(stride * height - 1) As Byte
@@ -59,7 +59,6 @@ Public Class FormMain
                              buffer(pixelOffset) = R
                              buffer(pixelOffset + 1) = G
                              buffer(pixelOffset + 2) = B
-                             buffer(pixelOffset + 3) = 255
 
                          End Sub)
         Next
@@ -128,12 +127,20 @@ Public Class FormMain
 
     Private Function newXOffset(ByRef e As MouseEventArgs) As Double
         Dim deltaX As Integer = ptX - e.X
-        Return SelectorXOffset.Value + (2 * deltaX / PictureBoxFractal.Width) * scaleFactor
+        Return SelectorXOffset.Value + HighestCoordinate(deltaX)
     End Function
 
     Private Function newYOffset(ByRef e As MouseEventArgs) As Double
         Dim deltaY As Integer = ptY - e.Y
-        Return SelectorYOffset.Value + (2 * deltaY / PictureBoxFractal.Height) * scaleFactor
+        Return SelectorYOffset.Value + HighestCoordinate(deltaY)
+    End Function
+
+    Private Function HighestCoordinate(ByRef deltaY As Integer) As Double
+        Return (2 * deltaY / HighestDimension()) * scaleFactor
+    End Function
+
+    Private Function HighestDimension() As Integer
+        Return Math.Max(PictureBoxFractal.Width, PictureBoxFractal.Height)
     End Function
 
     Private Sub ToolStripTogglePanel_Click(sender As Object, e As EventArgs) Handles ToolStripMenuTogglePanel.Click

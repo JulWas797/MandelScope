@@ -41,9 +41,9 @@ Partial Class FormAbout
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
         Me.Label1.Location = New System.Drawing.Point(252, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(329, 69)
+        Me.Label1.Size = New System.Drawing.Size(395, 69)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Mandelbrot"
+        Me.Label1.Text = "MandelScope"
         '
         'Label2
         '
@@ -59,7 +59,7 @@ Partial Class FormAbout
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(265, 130)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(314, 192)
+        Me.Label3.Size = New System.Drawing.Size(323, 192)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = resources.GetString("Label3.Text")
         '
@@ -71,7 +71,7 @@ Partial Class FormAbout
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(97, 20)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Release 1.4"
+        Me.Label4.Text = "Release 1.5"
         '
         'LinkLabelWebsite
         '
@@ -97,7 +97,7 @@ Partial Class FormAbout
         '
         'PictureBoxBMC
         '
-        Me.PictureBoxBMC.Image = Global.Mandelbrot.My.Resources.Resources.BMCButton
+        Me.PictureBoxBMC.Image = Global.MandelScope.My.Resources.Resources.BMCButton
         Me.PictureBoxBMC.Location = New System.Drawing.Point(264, 436)
         Me.PictureBoxBMC.Name = "PictureBoxBMC"
         Me.PictureBoxBMC.Size = New System.Drawing.Size(203, 53)
@@ -108,7 +108,7 @@ Partial Class FormAbout
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Image = Global.MandelScope.My.Resources.Resources.AboutImage
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
@@ -121,7 +121,7 @@ Partial Class FormAbout
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(632, 502)
+        Me.ClientSize = New System.Drawing.Size(694, 502)
         Me.Controls.Add(Me.PictureBoxBMC)
         Me.Controls.Add(Me.LinkLabelWebsite)
         Me.Controls.Add(Me.Label4)

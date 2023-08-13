@@ -50,6 +50,7 @@ Partial Class FormMain
         Me.ToolStripDropDownSettings = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuTogglePanel = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuResetZoom = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuResetPosition = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuSwitchFractals = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuMandelbrot = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuBurningShip = New System.Windows.Forms.ToolStripMenuItem()
@@ -60,7 +61,6 @@ Partial Class FormMain
         Me.PanelPictureBox = New System.Windows.Forms.Panel()
         Me.PictureBoxFractal = New System.Windows.Forms.PictureBox()
         Me.ScrollTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.ToolStripMenuResetPosition = New System.Windows.Forms.ToolStripMenuItem()
         Me.SidePanel.SuspendLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SelectorXOffset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -313,104 +313,105 @@ Partial Class FormMain
         Me.ToolStripMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownSettings, Me.ToolStripButtonAbout})
         Me.ToolStripMain.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripMain.Name = "ToolStripMain"
-        Me.ToolStripMain.Size = New System.Drawing.Size(968, 27)
+        Me.ToolStripMain.Size = New System.Drawing.Size(968, 31)
         Me.ToolStripMain.TabIndex = 3
         Me.ToolStripMain.Text = "ToolStrip1"
         '
         'ToolStripDropDownSettings
         '
         Me.ToolStripDropDownSettings.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuTogglePanel, Me.ToolStripMenuResetZoom, Me.ToolStripMenuResetPosition, Me.ToolStripMenuSwitchFractals})
-        Me.ToolStripDropDownSettings.Image = Global.Mandelbrot.My.Resources.Resources.HammerIcon
+        Me.ToolStripDropDownSettings.Image = Global.MandelScope.My.Resources.Resources.HammerIcon
         Me.ToolStripDropDownSettings.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownSettings.Name = "ToolStripDropDownSettings"
-        Me.ToolStripDropDownSettings.Size = New System.Drawing.Size(96, 24)
+        Me.ToolStripDropDownSettings.Size = New System.Drawing.Size(96, 28)
         Me.ToolStripDropDownSettings.Text = "Settings"
         '
         'ToolStripMenuTogglePanel
         '
         Me.ToolStripMenuTogglePanel.Name = "ToolStripMenuTogglePanel"
-        Me.ToolStripMenuTogglePanel.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuTogglePanel.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuTogglePanel.Text = "Toggle Panel"
         '
         'ToolStripMenuResetZoom
         '
         Me.ToolStripMenuResetZoom.Name = "ToolStripMenuResetZoom"
-        Me.ToolStripMenuResetZoom.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuResetZoom.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuResetZoom.Text = "Reset Zoom"
+        '
+        'ToolStripMenuResetPosition
+        '
+        Me.ToolStripMenuResetPosition.Name = "ToolStripMenuResetPosition"
+        Me.ToolStripMenuResetPosition.Size = New System.Drawing.Size(187, 26)
+        Me.ToolStripMenuResetPosition.Text = "Reset Position"
         '
         'ToolStripMenuSwitchFractals
         '
         Me.ToolStripMenuSwitchFractals.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuMandelbrot, Me.ToolStripMenuBurningShip, Me.ToolStripMenuJulia, Me.ToolStripMenuTricorn, Me.ToolStripMenuBuffalo})
         Me.ToolStripMenuSwitchFractals.Name = "ToolStripMenuSwitchFractals"
-        Me.ToolStripMenuSwitchFractals.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuSwitchFractals.Size = New System.Drawing.Size(187, 26)
         Me.ToolStripMenuSwitchFractals.Text = "Switch Fractal "
         '
         'ToolStripMenuMandelbrot
         '
         Me.ToolStripMenuMandelbrot.Name = "ToolStripMenuMandelbrot"
-        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuMandelbrot.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuMandelbrot.Text = "Mandelbrot"
         '
         'ToolStripMenuBurningShip
         '
         Me.ToolStripMenuBurningShip.Name = "ToolStripMenuBurningShip"
-        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuBurningShip.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuBurningShip.Text = "Burning ship"
         '
         'ToolStripMenuJulia
         '
         Me.ToolStripMenuJulia.Name = "ToolStripMenuJulia"
-        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuJulia.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuJulia.Text = "Julia"
         '
         'ToolStripMenuTricorn
         '
         Me.ToolStripMenuTricorn.Name = "ToolStripMenuTricorn"
-        Me.ToolStripMenuTricorn.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuTricorn.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuTricorn.Text = "Tricorn"
         '
         'ToolStripMenuBuffalo
         '
         Me.ToolStripMenuBuffalo.Name = "ToolStripMenuBuffalo"
-        Me.ToolStripMenuBuffalo.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuBuffalo.Size = New System.Drawing.Size(174, 26)
         Me.ToolStripMenuBuffalo.Text = "Buffalo"
         '
         'ToolStripButtonAbout
         '
-        Me.ToolStripButtonAbout.Image = Global.Mandelbrot.My.Resources.Resources.HelpIcon
+        Me.ToolStripButtonAbout.Image = Global.MandelScope.My.Resources.Resources.HelpIcon
         Me.ToolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonAbout.Name = "ToolStripButtonAbout"
-        Me.ToolStripButtonAbout.Size = New System.Drawing.Size(74, 24)
+        Me.ToolStripButtonAbout.Size = New System.Drawing.Size(74, 28)
         Me.ToolStripButtonAbout.Text = "About"
         '
         'PanelPictureBox
         '
         Me.PanelPictureBox.Controls.Add(Me.PictureBoxFractal)
         Me.PanelPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelPictureBox.Location = New System.Drawing.Point(0, 27)
+        Me.PanelPictureBox.Location = New System.Drawing.Point(0, 31)
         Me.PanelPictureBox.Name = "PanelPictureBox"
-        Me.PanelPictureBox.Size = New System.Drawing.Size(968, 602)
+        Me.PanelPictureBox.Size = New System.Drawing.Size(968, 598)
         Me.PanelPictureBox.TabIndex = 4
         '
         'PictureBoxFractal
         '
         Me.PictureBoxFractal.BackColor = System.Drawing.SystemColors.Control
+        Me.PictureBoxFractal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBoxFractal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBoxFractal.Location = New System.Drawing.Point(0, 0)
         Me.PictureBoxFractal.Name = "PictureBoxFractal"
-        Me.PictureBoxFractal.Size = New System.Drawing.Size(968, 602)
+        Me.PictureBoxFractal.Size = New System.Drawing.Size(968, 598)
         Me.PictureBoxFractal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBoxFractal.TabIndex = 0
         Me.PictureBoxFractal.TabStop = False
         '
         'ScrollTimer
         '
-        '
-        'ToolStripMenuResetPosition
-        '
-        Me.ToolStripMenuResetPosition.Name = "ToolStripMenuResetPosition"
-        Me.ToolStripMenuResetPosition.Size = New System.Drawing.Size(224, 26)
-        Me.ToolStripMenuResetPosition.Text = "Reset Position"
         '
         'FormMain
         '
@@ -422,7 +423,7 @@ Partial Class FormMain
         Me.Controls.Add(Me.SidePanel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FormMain"
-        Me.Text = "Mandelbrot"
+        Me.Text = "MandelScope"
         Me.SidePanel.ResumeLayout(False)
         Me.SidePanel.PerformLayout()
         CType(Me.SelectorYOffset, System.ComponentModel.ISupportInitialize).EndInit()

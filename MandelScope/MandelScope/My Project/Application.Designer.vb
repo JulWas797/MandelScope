@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Mandelbrot.FormMain
+            Me.MainForm = Global.MandelScope.FormMain
         End Sub
     End Class
 End Namespace
